@@ -1,0 +1,8 @@
+main.c:58:6:CAN_Tx	56	static
+main.c:94:6:CAN_FilterConfig	56	static
+main.c:116:6:CAN_Rx	48	static
+main.c:141:5:main	40	static
+main.c:207:6:SystemClock_Config	72	static
+main.c:243:13:MX_CAN_Init	8	static
+main.c:280:13:MX_GPIO_Init	16	static
+main.c:296:6:Error_Handler	4	static

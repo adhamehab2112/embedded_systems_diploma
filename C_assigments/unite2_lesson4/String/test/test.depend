@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1690287900 source:d:\kirolos diploma\git\git_repo\c_assigments\unite2_lesson4\string\test\main.c
+	<stdio.h>
+	<stdlib.h>
+	<String.h>
+
