@@ -1,0 +1,1 @@
+Src/MCAL/I2C/I2C.o: ../Src/MCAL/I2C/I2C.c
