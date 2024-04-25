@@ -1,0 +1,7 @@
+CortexMx_Os_Porting.c:16:6:HardFault_Handler	4	static
+CortexMx_Os_Porting.c:20:6:MemManage_Handler	4	static
+CortexMx_Os_Porting.c:24:6:BusFault_Handler	4	static
+CortexMx_Os_Porting.c:28:6:UsageFault_Handler	4	static
+CortexMx_Os_Porting.c:35:27:SVC_Handler	0	static,ignoring_inline_asm
+CortexMx_Os_Porting.c:52:6:PendSV_Handler	4	static
+CortexMx_Os_Porting.c:62:6:HW_Init	4	static
