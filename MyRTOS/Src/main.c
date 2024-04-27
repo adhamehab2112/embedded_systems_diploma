@@ -18,22 +18,32 @@ void wait(uint32_t time)
 }
 
 Task_ref_t Task1 , Task2 , Task3 ;
+unsigned char task1LED , task2LED , task3LED;
 void task1_fun()
 {
-	while(1);
+	while(1)
+	{
+		task1LED ^= 1 ;
+	}
 }
 void task2_fun()
 {
-	while(1);
+	while(1)
+	{
+		task2LED ^= 1 ;
+	}
 }
 void task3_fun()
 {
-	while(1);
+	while(1)
+	{
+		task3LED ^= 1 ;
+	}
 }
 
 
 int main()
-{
+   {
 	// HW_Init (CLK-RCC)
 	HW_Init();
 	// RTOS Initialization
@@ -53,9 +63,14 @@ int main()
 	Task3.ptr_TaskEntery = task3_fun ;
 	Task3.TaskPriority = 3 ;
 	strcpy(Task3.TaskName,"task_3");
+
 	RTOS_Create_Task(&Task1);
 	RTOS_Create_Task(&Task2);
 	RTOS_Create_Task(&Task3);
+	RTOS_Activate_Task(&Task1);
+	RTOS_Activate_Task(&Task2);
+	RTOS_Activate_Task(&Task3);
+	RTOS_StartOS();
 	while(1)
 	{
 

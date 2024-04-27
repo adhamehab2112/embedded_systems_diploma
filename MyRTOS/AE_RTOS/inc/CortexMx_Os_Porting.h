@@ -12,7 +12,7 @@ Version :1.0
 #ifndef INC_CORTEXMX_OS_PORTING_H_
 #define INC_CORTEXMX_OS_PORTING_H_
 
- #include"ARMCM3.h"
+ #include"core_cm3.h"
 
 /************************** Stack Top Symbol *************************************************/
 extern unsigned int _estack ;
@@ -39,5 +39,8 @@ extern unsigned int _eheap  ;
 #define OS_SWITCH_TO_UNPRIV				__asm("MRS r3,CONTROL \n\t" \
 			  	  	  	  	  	  	  	"ORR r3,r3,#0x1 \n\t"		\
 										"MSR CONTROL,r3")
+/************************************** APIs Header *****************************************/
+void trigger_OS_PendSV();
+void System_Start_Ticker();
 
 #endif /* INC_CORTEXMX_OS_PORTING_H_ */

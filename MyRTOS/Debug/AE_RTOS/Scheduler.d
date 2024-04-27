@@ -1,9 +1,9 @@
 AE_RTOS/Scheduler.o: ../AE_RTOS/Scheduler.c \
  C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/AE_RTOS/inc/Scheduler.h \
  C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/AE_RTOS/inc/CortexMx_Os_Porting.h \
- C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/CMSIS_V5/ARMCM3.h \
  C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/CMSIS_V5/core_cm3.h \
  C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/CMSIS_V5/ARMCM3.h \
+ C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/CMSIS_V5/core_cm3.h \
  C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/CMSIS_V5/cmsis_version.h \
  C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/CMSIS_V5/cmsis_compiler.h \
  C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/CMSIS_V5/cmsis_gcc.h \
@@ -16,11 +16,11 @@ C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/AE_RTOS/inc/Scheduler.h:
 
 C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/AE_RTOS/inc/CortexMx_Os_Porting.h:
 
-C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/CMSIS_V5/ARMCM3.h:
-
 C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/CMSIS_V5/core_cm3.h:
 
 C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/CMSIS_V5/ARMCM3.h:
+
+C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/CMSIS_V5/core_cm3.h:
 
 C:/Users/adham/STM32CubeIDE/workspace_1.4.0/Arm_course/CMSIS_V5/cmsis_version.h:
 

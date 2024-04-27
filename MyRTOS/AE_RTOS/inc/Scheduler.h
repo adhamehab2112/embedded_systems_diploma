@@ -35,8 +35,8 @@ typedef struct {
 	enum{
 		Suspended ,
 		Waiting   ,
-		ready     ,
-		running
+		Ready     ,
+		Running
 	}TaskState;
 	struct{
 			enum {
@@ -54,6 +54,8 @@ void 				 OS_SVC_Services(int *args);
 void 				 Os_SVC_Set(int SVC_ID);
 Os_Error_State_t	 RTOS_Init(void);
 Os_Error_State_t 	 RTOS_Create_Task(Task_ref_t *Ptr_task);
+Os_Error_State_t 	 RTOS_Terminate_Task(Task_ref_t *Ptr_task);
+Os_Error_State_t 	 RTOS_StartOS();
 
 
 #endif /* INC_SCHEDULER_H_ */

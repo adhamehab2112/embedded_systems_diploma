@@ -10,6 +10,8 @@ Version :1.0
 *********************************************************/
 
 #include"CortexMx_Os_Porting.h"
+/******************		Global 			Variables	*******************/
+unsigned char SystikLED ;
 
 /******************		Faults Exceptions Handler		***************/
 
@@ -28,6 +30,12 @@ void BusFault_Handler()
 void UsageFault_Handler()
 {
 	while(1);
+}
+void SysTick_Handler()
+{
+	SystikLED ^= 1 ;
+	RTOS_Select_Next_Task();
+	trigger_OS_PendSV();
 }
 /*********************************************************************/
 
@@ -48,11 +56,7 @@ __attribute((naked)) void SVC_Handler()
 
 
 }
-/**********************		Pendsv handler	*********************/
-void PendSV_Handler()
-{
-	/*will be used in context switching*/
-}
+
 /**================================================================
 * @Fn    		: HW_Init
 * @brief 		: This function used to initialize the cpu core peripherals on which the Os depends
@@ -66,5 +70,29 @@ void HW_Init()
 	// 1 Count -> 0.125 us (Ticker)
 	// x Count -> 1ms ---> To configure periodic interrupt
 	// x = 8000 count
+	//Decrease the Priority of PENDSV to be <= to the SYSTICK Handler using CMSIS
+	__NVIC_SetPriority(PendSV_IRQn , 15);
 
+}
+/**================================================================
+* @Fn    		: trigger_OS_PendSV
+* @brief 		: This function used to trigger the PendSV exception using in context switching
+* @param [in] 	: void
+* @param [out] 	: void
+*===================================================================*/
+void trigger_OS_PendSV()
+{
+	SCB->ICSR |= SCB_ICSR_PENDSVSET_Msk ;
+	/*PendSV must be lower priority or equal to the priority of the SYSTK handler*/
+	/*So we need to configure this bcz systk->0 and Pendsv->-1 (HW INIT)*/
+}
+/**================================================================
+* @Fn    		: System_Start_Ticker
+* @brief 		: configure the System Timer to interrupt each 1ms
+* @param [in] 	: void
+* @param [out] 	: void
+*===================================================================*/
+void System_Start_Ticker()
+{
+	SysTick_Config(8000);
 }
