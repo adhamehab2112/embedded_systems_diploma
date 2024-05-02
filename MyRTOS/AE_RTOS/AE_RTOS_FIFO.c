@@ -1,23 +1,17 @@
-/*********************************************************************************************************
- * ********************************************************************************************************
-AUTHOR  : ADHAM EHAB
-MICRO   : STM32F32F103
-LAYER   : Services Layer
-DRIVER  : AE_RTOS
-File    : AE_RTOS_FIFO.c
-Version :1.0
-********************************************************************************************************
-*********************************************************/
+/**
+ ******************************************************************************
+ * @file           :  MYRTOS OS
+ * @author         : Keroles Shenouda
+ * @brief          : Create Your RTOS (ARM And RTOS Coure) in Master Embedded System Online Diploma
+ * www.learn-in-depth.com
+ * eng.keroles.karam@gmail.com
+ * Mater Embedded System Online Diploma
+ ******************************************************************************
+ */
 
 
 #include"AE_RTOS_FIFO.h"
-
-/**================================================================
-* @Fn    		: FIFO_init
-* @brief 		: This function is used Intialize the FIFO
-* @param [in] 	: Pointer to element of type FIFO buffer - Pointer to Task - FIFO length
-* @param [out] 	: Buffer_status
-*===================================================================*/
+/* *********************************** */
 Buffer_status FIFO_init (FIFO_Buf_t* fifo,element_type* buff , unsigned int length){
 
 	if(!buff )
@@ -34,12 +28,6 @@ Buffer_status FIFO_init (FIFO_Buf_t* fifo,element_type* buff , unsigned int leng
 }
 
 /* *********************************** */
-/**================================================================
-* @Fn    		: FIFO_enqueue
-* @brief 		: This function is used to add elements the FIFO
-* @param [in] 	: Pointer to element of type FIFO buffer - Pointer to Task that will be added in the queue
-* @param [out] 	: Buffer_status
-*===================================================================*/
 
 Buffer_status FIFO_enqueue (FIFO_Buf_t* fifo,element_type item){
 
@@ -70,12 +58,6 @@ Buffer_status FIFO_enqueue (FIFO_Buf_t* fifo,element_type item){
 }
 
 /* *********************************** */
-/**================================================================
-* @Fn    		: FIFO_dequeue
-* @brief 		: This function is used to remove elements the FIFO
-* @param [in] 	: Pointer to element of type FIFO buffer - Pointer to Task that will be renoved in the queue
-* @param [out] 	: Buffer_status
-*===================================================================*/
 
 Buffer_status FIFO_dequeue (FIFO_Buf_t* fifo, element_type* item){
 	/* check fifo valid */
@@ -104,12 +86,6 @@ Buffer_status FIFO_dequeue (FIFO_Buf_t* fifo, element_type* item){
 
 
 /* *********************************** */
-/**================================================================
-* @Fn    		: FIFO_is_full
-* @brief 		: This function is used to check if the FIFO is full or no
-* @param [in] 	: Pointer to element of type FIFO buffer
-* @param [out] 	: Buffer_status
-*===================================================================*/
 
 Buffer_status FIFO_is_full (FIFO_Buf_t* fifo){
 
@@ -119,4 +95,25 @@ Buffer_status FIFO_is_full (FIFO_Buf_t* fifo){
 		return FIFO_FULL;
 
 	return FIFO_NO_ERROR;
+}
+
+/* *********************************** */
+
+void FIFO_print (FIFO_Buf_t* fifo){
+
+	//element_type* temp;
+	//int i;
+	//if(fifo->counter == 0)
+	//	printf("fifo is empty");
+	//else
+	//	{
+	//		temp=fifo->tail;
+	//		printf("\n ==== fifo print ====\n");
+	//			for(i=0 ; i<fifo->length ; i++){
+	//				printf("\t %x  \n",*temp);
+	//					temp ++;
+	//			}
+	//
+	//
+	//	}
 }

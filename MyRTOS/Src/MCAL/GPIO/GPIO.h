@@ -11,7 +11,6 @@
 //-----------------------------
 //Includes
 #include"../../includes/std_macros.h"
-#include"../../includes/std_types.h"
 #include"../../includes/stm32_f103_x6.h"
 //-----------------------------
 

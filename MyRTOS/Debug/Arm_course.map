@@ -16,20 +16,22 @@ c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externalt
 Allocating common symbols
 Common symbol       size              file
 
-task2LED            0x1               Src/main.o
-RTOS_IDLE_Task      0x44              AE_RTOS/Scheduler.o
+SysTickLed          0x1               AE_RTOS/CortexMx_Os_Porting.o
+Task4               0x40              Src/main.o
+T3_Led              0x1               Src/main.o
 OS_Control          0x1ac             AE_RTOS/Scheduler.o
-task3LED            0x1               Src/main.o
-ReadyQueue          0x14              AE_RTOS/Scheduler.o
-Task1               0x44              Src/main.o
-ReadyQueue_FIFO     0x190             AE_RTOS/Scheduler.o
-Task3               0x44              Src/main.o
+T2_Led              0x1               Src/main.o
+T1_Led              0x1               Src/main.o
+Task1               0x40              Src/main.o
+Ready_QUEUE         0x14              AE_RTOS/Scheduler.o
+Task3               0x40              Src/main.o
 Global_ptr_callBack
                     0x3c              Src/MCAL/EXTI/EXTI.o
-task1LED            0x1               Src/main.o
-Task2               0x44              Src/main.o
+Task2               0x40              Src/main.o
+T4_Led              0x1               Src/main.o
 IdleTaskLed         0x1               AE_RTOS/Scheduler.o
-SystikLED           0x1               AE_RTOS/CortexMx_Os_Porting.o
+RTOS_IdleTask       0x40              AE_RTOS/Scheduler.o
+Ready_QUEUE_FIFO    0x190             AE_RTOS/Scheduler.o
 
 Discarded input sections
 
@@ -88,6 +90,8 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 AE_RTOS/AE_RTOS_FIFO.o
  .text.FIFO_is_full
                 0x0000000000000000       0x40 AE_RTOS/AE_RTOS_FIFO.o
+ .text.FIFO_print
+                0x0000000000000000       0x12 AE_RTOS/AE_RTOS_FIFO.o
  .group         0x0000000000000000        0xc AE_RTOS/CortexMx_Os_Porting.o
  .group         0x0000000000000000        0xc AE_RTOS/CortexMx_Os_Porting.o
  .group         0x0000000000000000        0xc AE_RTOS/CortexMx_Os_Porting.o
@@ -115,7 +119,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x22 AE_RTOS/CortexMx_Os_Porting.o
  .debug_macro   0x0000000000000000      0xe74 AE_RTOS/CortexMx_Os_Porting.o
  .debug_macro   0x0000000000000000      0x11f AE_RTOS/CortexMx_Os_Porting.o
- .debug_macro   0x0000000000000000       0x28 AE_RTOS/CortexMx_Os_Porting.o
+ .debug_macro   0x0000000000000000       0x2e AE_RTOS/CortexMx_Os_Porting.o
  .group         0x0000000000000000        0xc AE_RTOS/Scheduler.o
  .group         0x0000000000000000        0xc AE_RTOS/Scheduler.o
  .group         0x0000000000000000        0xc AE_RTOS/Scheduler.o
@@ -158,8 +162,8 @@ Discarded input sections
  .text          0x0000000000000000        0x0 AE_RTOS/Scheduler.o
  .data          0x0000000000000000        0x0 AE_RTOS/Scheduler.o
  .bss           0x0000000000000000        0x0 AE_RTOS/Scheduler.o
- .text.RTOS_Terminate_Task
-                0x0000000000000000       0x24 AE_RTOS/Scheduler.o
+ .text.RTOS_TerminalTask
+                0x0000000000000000       0x1c AE_RTOS/Scheduler.o
  .debug_macro   0x0000000000000000      0xa60 AE_RTOS/Scheduler.o
  .debug_macro   0x0000000000000000       0x28 AE_RTOS/Scheduler.o
  .debug_macro   0x0000000000000000       0x22 AE_RTOS/Scheduler.o
@@ -173,7 +177,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0xf1 AE_RTOS/Scheduler.o
  .debug_macro   0x0000000000000000      0xe74 AE_RTOS/Scheduler.o
  .debug_macro   0x0000000000000000      0x11f AE_RTOS/Scheduler.o
- .debug_macro   0x0000000000000000       0x28 AE_RTOS/Scheduler.o
+ .debug_macro   0x0000000000000000       0x2e AE_RTOS/Scheduler.o
  .debug_macro   0x0000000000000000       0x18 AE_RTOS/Scheduler.o
  .debug_macro   0x0000000000000000       0x3c AE_RTOS/Scheduler.o
  .debug_macro   0x0000000000000000       0x34 AE_RTOS/Scheduler.o
@@ -234,7 +238,7 @@ Discarded input sections
  .debug_aranges
                 0x0000000000000000       0x28 Src/HAL/KEYPAD/KEYPAD.o
  .debug_ranges  0x0000000000000000       0x18 Src/HAL/KEYPAD/KEYPAD.o
- .debug_macro   0x0000000000000000      0x14a Src/HAL/KEYPAD/KEYPAD.o
+ .debug_macro   0x0000000000000000      0x146 Src/HAL/KEYPAD/KEYPAD.o
  .debug_macro   0x0000000000000000      0xa60 Src/HAL/KEYPAD/KEYPAD.o
  .debug_macro   0x0000000000000000       0x2e Src/HAL/KEYPAD/KEYPAD.o
  .debug_macro   0x0000000000000000       0x18 Src/HAL/KEYPAD/KEYPAD.o
@@ -258,7 +262,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x31c Src/HAL/KEYPAD/KEYPAD.o
  .debug_macro   0x0000000000000000       0xc4 Src/HAL/KEYPAD/KEYPAD.o
  .debug_macro   0x0000000000000000       0x2e Src/HAL/KEYPAD/KEYPAD.o
- .debug_line    0x0000000000000000      0x5ff Src/HAL/KEYPAD/KEYPAD.o
+ .debug_line    0x0000000000000000      0x5f0 Src/HAL/KEYPAD/KEYPAD.o
  .debug_str     0x0000000000000000     0x7a35 Src/HAL/KEYPAD/KEYPAD.o
  .comment       0x0000000000000000       0x7c Src/HAL/KEYPAD/KEYPAD.o
  .debug_frame   0x0000000000000000       0x5c Src/HAL/KEYPAD/KEYPAD.o
@@ -315,7 +319,7 @@ Discarded input sections
  .debug_aranges
                 0x0000000000000000       0x68 Src/HAL/LCD/LCD.o
  .debug_ranges  0x0000000000000000       0x58 Src/HAL/LCD/LCD.o
- .debug_macro   0x0000000000000000      0x14a Src/HAL/LCD/LCD.o
+ .debug_macro   0x0000000000000000      0x146 Src/HAL/LCD/LCD.o
  .debug_macro   0x0000000000000000      0xa60 Src/HAL/LCD/LCD.o
  .debug_macro   0x0000000000000000       0x2e Src/HAL/LCD/LCD.o
  .debug_macro   0x0000000000000000       0x18 Src/HAL/LCD/LCD.o
@@ -339,7 +343,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x31c Src/HAL/LCD/LCD.o
  .debug_macro   0x0000000000000000       0xc4 Src/HAL/LCD/LCD.o
  .debug_macro   0x0000000000000000       0x94 Src/HAL/LCD/LCD.o
- .debug_line    0x0000000000000000      0x6a2 Src/HAL/LCD/LCD.o
+ .debug_line    0x0000000000000000      0x693 Src/HAL/LCD/LCD.o
  .debug_str     0x0000000000000000     0x7dd7 Src/HAL/LCD/LCD.o
  .comment       0x0000000000000000       0x7c Src/HAL/LCD/LCD.o
  .debug_frame   0x0000000000000000      0x164 Src/HAL/LCD/LCD.o
@@ -454,7 +458,7 @@ Discarded input sections
  .debug_aranges
                 0x0000000000000000       0x60 Src/MCAL/GPIO/GPIO.o
  .debug_ranges  0x0000000000000000       0x50 Src/MCAL/GPIO/GPIO.o
- .debug_macro   0x0000000000000000      0x12f Src/MCAL/GPIO/GPIO.o
+ .debug_macro   0x0000000000000000      0x12b Src/MCAL/GPIO/GPIO.o
  .debug_macro   0x0000000000000000      0xa60 Src/MCAL/GPIO/GPIO.o
  .debug_macro   0x0000000000000000       0x2e Src/MCAL/GPIO/GPIO.o
  .debug_macro   0x0000000000000000       0x18 Src/MCAL/GPIO/GPIO.o
@@ -735,7 +739,8 @@ Discarded input sections
  .text          0x0000000000000000        0x0 Src/main.o
  .data          0x0000000000000000        0x0 Src/main.o
  .bss           0x0000000000000000        0x0 Src/main.o
- .text.wait     0x0000000000000000       0x38 Src/main.o
+ .bss.counter.6011
+                0x0000000000000000        0x4 Src/main.o
  .debug_macro   0x0000000000000000      0xa60 Src/main.o
  .debug_macro   0x0000000000000000       0x28 Src/main.o
  .debug_macro   0x0000000000000000       0x22 Src/main.o
@@ -774,7 +779,7 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x3d Src/main.o
  .debug_macro   0x0000000000000000       0x16 Src/main.o
  .debug_macro   0x0000000000000000      0x145 Src/main.o
- .debug_macro   0x0000000000000000       0x28 Src/main.o
+ .debug_macro   0x0000000000000000       0x2e Src/main.o
  .group         0x0000000000000000        0xc Src/syscalls.o
  .group         0x0000000000000000        0xc Src/syscalls.o
  .group         0x0000000000000000        0xc Src/syscalls.o
@@ -1065,7 +1070,7 @@ LOAD c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000008000000                g_pfnVectors
                 0x0000000008000130                . = ALIGN (0x4)
 
-.text           0x0000000008000130      0xe64
+.text           0x0000000008000130      0xfd0
                 0x0000000008000130                . = ALIGN (0x4)
  *(.text)
  .text          0x0000000008000130       0x40 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
@@ -1087,256 +1092,266 @@ LOAD c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .text.SysTick_Config
                 0x000000000800031c       0x44 AE_RTOS/CortexMx_Os_Porting.o
  .text.HardFault_Handler
-                0x0000000008000360        0x6 AE_RTOS/CortexMx_Os_Porting.o
+                0x0000000008000360        0xc AE_RTOS/CortexMx_Os_Porting.o
                 0x0000000008000360                HardFault_Handler
  .text.MemManage_Handler
-                0x0000000008000366        0x6 AE_RTOS/CortexMx_Os_Porting.o
-                0x0000000008000366                MemManage_Handler
+                0x000000000800036c        0xc AE_RTOS/CortexMx_Os_Porting.o
+                0x000000000800036c                MemManage_Handler
  .text.BusFault_Handler
-                0x000000000800036c        0x6 AE_RTOS/CortexMx_Os_Porting.o
-                0x000000000800036c                BusFault_Handler
+                0x0000000008000378        0xc AE_RTOS/CortexMx_Os_Porting.o
+                0x0000000008000378                BusFault_Handler
  .text.UsageFault_Handler
-                0x0000000008000372        0x6 AE_RTOS/CortexMx_Os_Porting.o
-                0x0000000008000372                UsageFault_Handler
- .text.SysTick_Handler
-                0x0000000008000378       0x24 AE_RTOS/CortexMx_Os_Porting.o
-                0x0000000008000378                SysTick_Handler
- .text.SVC_Handler
-                0x000000000800039c       0x14 AE_RTOS/CortexMx_Os_Porting.o
-                0x000000000800039c                SVC_Handler
- .text.HW_Init  0x00000000080003b0       0x12 AE_RTOS/CortexMx_Os_Porting.o
-                0x00000000080003b0                HW_Init
- *fill*         0x00000000080003c2        0x2 
+                0x0000000008000384        0xc AE_RTOS/CortexMx_Os_Porting.o
+                0x0000000008000384                UsageFault_Handler
  .text.trigger_OS_PendSV
-                0x00000000080003c4       0x1c AE_RTOS/CortexMx_Os_Porting.o
-                0x00000000080003c4                trigger_OS_PendSV
- .text.System_Start_Ticker
-                0x00000000080003e0       0x10 AE_RTOS/CortexMx_Os_Porting.o
-                0x00000000080003e0                System_Start_Ticker
+                0x0000000008000390       0x1c AE_RTOS/CortexMx_Os_Porting.o
+                0x0000000008000390                trigger_OS_PendSV
+ .text.SysTick_Handler
+                0x00000000080003ac       0x28 AE_RTOS/CortexMx_Os_Porting.o
+                0x00000000080003ac                SysTick_Handler
+ .text.SVC_Handler
+                0x00000000080003d4       0x14 AE_RTOS/CortexMx_Os_Porting.o
+                0x00000000080003d4                SVC_Handler
+ .text.Hardware_init
+                0x00000000080003e8       0x12 AE_RTOS/CortexMx_Os_Porting.o
+                0x00000000080003e8                Hardware_init
+ .text.Start_Systick
+                0x00000000080003fa       0x10 AE_RTOS/CortexMx_Os_Porting.o
+                0x00000000080003fa                Start_Systick
+ *fill*         0x000000000800040a        0x2 
  .text.PendSV_Handler
-                0x00000000080003f0      0x1b8 AE_RTOS/Scheduler.o
-                0x00000000080003f0                PendSV_Handler
- .text.RTOS_PrivCreate_MainStack
-                0x00000000080005a8       0x50 AE_RTOS/Scheduler.o
-                0x00000000080005a8                RTOS_PrivCreate_MainStack
- .text.RTOS_privIdleTask
-                0x00000000080005f8       0x1c AE_RTOS/Scheduler.o
-                0x00000000080005f8                RTOS_privIdleTask
- .text.RTOS_PrivCreate_Stack
-                0x0000000008000614       0x7c AE_RTOS/Scheduler.o
-                0x0000000008000614                RTOS_PrivCreate_Stack
+                0x000000000800040c      0x1bc AE_RTOS/Scheduler.o
+                0x000000000800040c                PendSV_Handler
+ .text.Idle_Task
+                0x00000000080005c8       0x1c AE_RTOS/Scheduler.o
+                0x00000000080005c8                Idle_Task
+ .text.RTOS_Create_MainStack
+                0x00000000080005e4       0x44 AE_RTOS/Scheduler.o
+                0x00000000080005e4                RTOS_Create_MainStack
+ .text.RTOS_Create_TaskStack
+                0x0000000008000628       0x82 AE_RTOS/Scheduler.o
+                0x0000000008000628                RTOS_Create_TaskStack
+ *fill*         0x00000000080006aa        0x2 
  .text.RTOS_Tasks_Sorting
-                0x0000000008000690       0x90 AE_RTOS/Scheduler.o
-                0x0000000008000690                RTOS_Tasks_Sorting
+                0x00000000080006ac       0x90 AE_RTOS/Scheduler.o
+                0x00000000080006ac                RTOS_Tasks_Sorting
  .text.RTOS_Update_SchedulerTable
-                0x0000000008000720       0xc0 AE_RTOS/Scheduler.o
-                0x0000000008000720                RTOS_Update_SchedulerTable
+                0x000000000800073c       0xdc AE_RTOS/Scheduler.o
+                0x000000000800073c                RTOS_Update_SchedulerTable
  .text.RTOS_Select_Next_Task
-                0x00000000080007e0       0xa4 AE_RTOS/Scheduler.o
-                0x00000000080007e0                RTOS_Select_Next_Task
- .text.OS_SVC_Services
-                0x0000000008000884       0x60 AE_RTOS/Scheduler.o
-                0x0000000008000884                OS_SVC_Services
- .text.Os_SVC_Set
-                0x00000000080008e4       0x2e AE_RTOS/Scheduler.o
-                0x00000000080008e4                Os_SVC_Set
- *fill*         0x0000000008000912        0x2 
- .text.RTOS_Init
-                0x0000000008000914       0x80 AE_RTOS/Scheduler.o
-                0x0000000008000914                RTOS_Init
- .text.RTOS_Create_Task
-                0x0000000008000994       0x7c AE_RTOS/Scheduler.o
-                0x0000000008000994                RTOS_Create_Task
- .text.RTOS_Activate_Task
-                0x0000000008000a10       0x24 AE_RTOS/Scheduler.o
-                0x0000000008000a10                RTOS_Activate_Task
+                0x0000000008000818       0x98 AE_RTOS/Scheduler.o
+                0x0000000008000818                RTOS_Select_Next_Task
+ .text.OS_SVC_Service
+                0x00000000080008b0       0x6c AE_RTOS/Scheduler.o
+                0x00000000080008b0                OS_SVC_Service
+ .text.OS_SVC_Set
+                0x000000000800091c       0x30 AE_RTOS/Scheduler.o
+                0x000000000800091c                OS_SVC_Set
+ .text.RTOS_Update_TaskTime
+                0x000000000800094c       0x88 AE_RTOS/Scheduler.o
+                0x000000000800094c                RTOS_Update_TaskTime
+ .text.RTOS_init
+                0x00000000080009d4       0x84 AE_RTOS/Scheduler.o
+                0x00000000080009d4                RTOS_init
+ .text.RTOS_CreateTask
+                0x0000000008000a58       0x6c AE_RTOS/Scheduler.o
+                0x0000000008000a58                RTOS_CreateTask
+ .text.RTOS_ActivateTask
+                0x0000000008000ac4       0x1c AE_RTOS/Scheduler.o
+                0x0000000008000ac4                RTOS_ActivateTask
  .text.RTOS_StartOS
-                0x0000000008000a34       0x68 AE_RTOS/Scheduler.o
-                0x0000000008000a34                RTOS_StartOS
+                0x0000000008000ae0       0x5c AE_RTOS/Scheduler.o
+                0x0000000008000ae0                RTOS_StartOS
+ .text.RTOS_Task_Wait
+                0x0000000008000b3c       0x2c AE_RTOS/Scheduler.o
+                0x0000000008000b3c                RTOS_Task_Wait
  .text.EXTI0_IRQHandler
-                0x0000000008000a9c       0x24 Src/MCAL/EXTI/EXTI.o
-                0x0000000008000a9c                EXTI0_IRQHandler
+                0x0000000008000b68       0x24 Src/MCAL/EXTI/EXTI.o
+                0x0000000008000b68                EXTI0_IRQHandler
  .text.EXTI1_IRQHandler
-                0x0000000008000ac0       0x24 Src/MCAL/EXTI/EXTI.o
-                0x0000000008000ac0                EXTI1_IRQHandler
+                0x0000000008000b8c       0x24 Src/MCAL/EXTI/EXTI.o
+                0x0000000008000b8c                EXTI1_IRQHandler
  .text.EXTI2_IRQHandler
-                0x0000000008000ae4       0x24 Src/MCAL/EXTI/EXTI.o
-                0x0000000008000ae4                EXTI2_IRQHandler
+                0x0000000008000bb0       0x24 Src/MCAL/EXTI/EXTI.o
+                0x0000000008000bb0                EXTI2_IRQHandler
  .text.EXTI3_IRQHandler
-                0x0000000008000b08       0x24 Src/MCAL/EXTI/EXTI.o
-                0x0000000008000b08                EXTI3_IRQHandler
+                0x0000000008000bd4       0x24 Src/MCAL/EXTI/EXTI.o
+                0x0000000008000bd4                EXTI3_IRQHandler
  .text.EXTI4_IRQHandler
-                0x0000000008000b2c       0x24 Src/MCAL/EXTI/EXTI.o
-                0x0000000008000b2c                EXTI4_IRQHandler
+                0x0000000008000bf8       0x24 Src/MCAL/EXTI/EXTI.o
+                0x0000000008000bf8                EXTI4_IRQHandler
  .text.EXTI9_5_IRQHandler
-                0x0000000008000b50       0xa8 Src/MCAL/EXTI/EXTI.o
-                0x0000000008000b50                EXTI9_5_IRQHandler
+                0x0000000008000c1c       0xa8 Src/MCAL/EXTI/EXTI.o
+                0x0000000008000c1c                EXTI9_5_IRQHandler
  .text.EXTI15_10_IRQHandler
-                0x0000000008000bf8       0xc4 Src/MCAL/EXTI/EXTI.o
-                0x0000000008000bf8                EXTI15_10_IRQHandler
+                0x0000000008000cc4       0xc4 Src/MCAL/EXTI/EXTI.o
+                0x0000000008000cc4                EXTI15_10_IRQHandler
  .text.SPI1_IRQHandler
-                0x0000000008000cbc       0x5c Src/MCAL/SPI/SPI.o
-                0x0000000008000cbc                SPI1_IRQHandler
+                0x0000000008000d88       0x5c Src/MCAL/SPI/SPI.o
+                0x0000000008000d88                SPI1_IRQHandler
  .text.SPI2_IRQHandler
-                0x0000000008000d18       0x5c Src/MCAL/SPI/SPI.o
-                0x0000000008000d18                SPI2_IRQHandler
+                0x0000000008000de4       0x5c Src/MCAL/SPI/SPI.o
+                0x0000000008000de4                SPI2_IRQHandler
  .text.USART1_IRQHandler
-                0x0000000008000d74       0x14 Src/MCAL/USART/USART.o
-                0x0000000008000d74                USART1_IRQHandler
+                0x0000000008000e40       0x14 Src/MCAL/USART/USART.o
+                0x0000000008000e40                USART1_IRQHandler
  .text.USART2_IRQHandler
-                0x0000000008000d88       0x14 Src/MCAL/USART/USART.o
-                0x0000000008000d88                USART2_IRQHandler
+                0x0000000008000e54       0x14 Src/MCAL/USART/USART.o
+                0x0000000008000e54                USART2_IRQHandler
  .text.USART3_IRQHandler
-                0x0000000008000d9c       0x14 Src/MCAL/USART/USART.o
-                0x0000000008000d9c                USART3_IRQHandler
- .text.task1_fun
-                0x0000000008000db0       0x18 Src/main.o
-                0x0000000008000db0                task1_fun
- .text.task2_fun
-                0x0000000008000dc8       0x18 Src/main.o
-                0x0000000008000dc8                task2_fun
- .text.task3_fun
-                0x0000000008000de0       0x18 Src/main.o
-                0x0000000008000de0                task3_fun
- .text.main     0x0000000008000df8       0xe8 Src/main.o
-                0x0000000008000df8                main
+                0x0000000008000e68       0x14 Src/MCAL/USART/USART.o
+                0x0000000008000e68                USART3_IRQHandler
+ .text.Task1_func
+                0x0000000008000e7c       0x44 Src/main.o
+                0x0000000008000e7c                Task1_func
+ .text.Task2_func
+                0x0000000008000ec0       0x28 Src/main.o
+                0x0000000008000ec0                Task2_func
+ .text.Task3_func
+                0x0000000008000ee8       0x28 Src/main.o
+                0x0000000008000ee8                Task3_func
+ .text.Task4_func
+                0x0000000008000f10       0x28 Src/main.o
+                0x0000000008000f10                Task4_func
+ .text.main     0x0000000008000f38      0x114 Src/main.o
+                0x0000000008000f38                main
  .text.Reset_Handler
-                0x0000000008000ee0       0x50 Startup/startup_stm32f103c6tx.o
-                0x0000000008000ee0                Reset_Handler
+                0x000000000800104c       0x50 Startup/startup_stm32f103c6tx.o
+                0x000000000800104c                Reset_Handler
  .text.Default_Handler
-                0x0000000008000f30        0x2 Startup/startup_stm32f103c6tx.o
-                0x0000000008000f30                TIM8_TRG_COM_IRQHandler
-                0x0000000008000f30                TIM8_CC_IRQHandler
-                0x0000000008000f30                DebugMon_Handler
-                0x0000000008000f30                TIM1_CC_IRQHandler
-                0x0000000008000f30                TIM6_IRQHandler
-                0x0000000008000f30                PVD_IRQHandler
-                0x0000000008000f30                SDIO_IRQHandler
-                0x0000000008000f30                NMI_Handler
-                0x0000000008000f30                USB_HP_CAN_TX_IRQHandler
-                0x0000000008000f30                I2C2_EV_IRQHandler
-                0x0000000008000f30                ADC1_2_IRQHandler
-                0x0000000008000f30                CAN_SCE_IRQHandler
-                0x0000000008000f30                TAMPER_IRQHandler
-                0x0000000008000f30                TIM8_UP_IRQHandler
-                0x0000000008000f30                DMA2_Channel2_IRQHandler
-                0x0000000008000f30                DMA1_Channel4_IRQHandler
-                0x0000000008000f30                RTC_IRQHandler
-                0x0000000008000f30                DMA1_Channel7_IRQHandler
-                0x0000000008000f30                UART5_IRQHandler
-                0x0000000008000f30                ADC3_IRQHandler
-                0x0000000008000f30                TIM4_IRQHandler
-                0x0000000008000f30                CAN_RX1_IRQHandler
-                0x0000000008000f30                DMA2_Channel1_IRQHandler
-                0x0000000008000f30                I2C1_EV_IRQHandler
-                0x0000000008000f30                DMA1_Channel6_IRQHandler
-                0x0000000008000f30                UART4_IRQHandler
-                0x0000000008000f30                TIM3_IRQHandler
-                0x0000000008000f30                RCC_IRQHandler
-                0x0000000008000f30                TIM1_TRG_COM_IRQHandler
-                0x0000000008000f30                DMA1_Channel1_IRQHandler
-                0x0000000008000f30                Default_Handler
-                0x0000000008000f30                TIM7_IRQHandler
-                0x0000000008000f30                TIM5_IRQHandler
-                0x0000000008000f30                USB_LP_CAN_RX0_IRQHandler
-                0x0000000008000f30                DMA1_Channel5_IRQHandler
-                0x0000000008000f30                DMA1_Channel3_IRQHandler
-                0x0000000008000f30                FSMC_IRQHandler
-                0x0000000008000f30                TIM1_UP_IRQHandler
-                0x0000000008000f30                WWDG_IRQHandler
-                0x0000000008000f30                TIM2_IRQHandler
-                0x0000000008000f30                TIM1_BRK_IRQHandler
-                0x0000000008000f30                RTCAlarm_IRQHandler
-                0x0000000008000f30                DMA2_Channel4_5_IRQHandler
-                0x0000000008000f30                I2C2_ER_IRQHandler
-                0x0000000008000f30                DMA1_Channel2_IRQHandler
-                0x0000000008000f30                TIM8_BRK_IRQHandler
-                0x0000000008000f30                FLASH_IRQHandler
-                0x0000000008000f30                SPI3_IRQHandler
-                0x0000000008000f30                I2C1_ER_IRQHandler
-                0x0000000008000f30                DMA2_Channel3_IRQHandler
- *fill*         0x0000000008000f32        0x2 
+                0x000000000800109c        0x2 Startup/startup_stm32f103c6tx.o
+                0x000000000800109c                TIM8_TRG_COM_IRQHandler
+                0x000000000800109c                TIM8_CC_IRQHandler
+                0x000000000800109c                DebugMon_Handler
+                0x000000000800109c                TIM1_CC_IRQHandler
+                0x000000000800109c                TIM6_IRQHandler
+                0x000000000800109c                PVD_IRQHandler
+                0x000000000800109c                SDIO_IRQHandler
+                0x000000000800109c                NMI_Handler
+                0x000000000800109c                USB_HP_CAN_TX_IRQHandler
+                0x000000000800109c                I2C2_EV_IRQHandler
+                0x000000000800109c                ADC1_2_IRQHandler
+                0x000000000800109c                CAN_SCE_IRQHandler
+                0x000000000800109c                TAMPER_IRQHandler
+                0x000000000800109c                TIM8_UP_IRQHandler
+                0x000000000800109c                DMA2_Channel2_IRQHandler
+                0x000000000800109c                DMA1_Channel4_IRQHandler
+                0x000000000800109c                RTC_IRQHandler
+                0x000000000800109c                DMA1_Channel7_IRQHandler
+                0x000000000800109c                UART5_IRQHandler
+                0x000000000800109c                ADC3_IRQHandler
+                0x000000000800109c                TIM4_IRQHandler
+                0x000000000800109c                CAN_RX1_IRQHandler
+                0x000000000800109c                DMA2_Channel1_IRQHandler
+                0x000000000800109c                I2C1_EV_IRQHandler
+                0x000000000800109c                DMA1_Channel6_IRQHandler
+                0x000000000800109c                UART4_IRQHandler
+                0x000000000800109c                TIM3_IRQHandler
+                0x000000000800109c                RCC_IRQHandler
+                0x000000000800109c                TIM1_TRG_COM_IRQHandler
+                0x000000000800109c                DMA1_Channel1_IRQHandler
+                0x000000000800109c                Default_Handler
+                0x000000000800109c                TIM7_IRQHandler
+                0x000000000800109c                TIM5_IRQHandler
+                0x000000000800109c                USB_LP_CAN_RX0_IRQHandler
+                0x000000000800109c                DMA1_Channel5_IRQHandler
+                0x000000000800109c                DMA1_Channel3_IRQHandler
+                0x000000000800109c                FSMC_IRQHandler
+                0x000000000800109c                TIM1_UP_IRQHandler
+                0x000000000800109c                WWDG_IRQHandler
+                0x000000000800109c                TIM2_IRQHandler
+                0x000000000800109c                TIM1_BRK_IRQHandler
+                0x000000000800109c                RTCAlarm_IRQHandler
+                0x000000000800109c                DMA2_Channel4_5_IRQHandler
+                0x000000000800109c                I2C2_ER_IRQHandler
+                0x000000000800109c                DMA1_Channel2_IRQHandler
+                0x000000000800109c                TIM8_BRK_IRQHandler
+                0x000000000800109c                FLASH_IRQHandler
+                0x000000000800109c                SPI3_IRQHandler
+                0x000000000800109c                I2C1_ER_IRQHandler
+                0x000000000800109c                DMA2_Channel3_IRQHandler
+ *fill*         0x000000000800109e        0x2 
  .text.__libc_init_array
-                0x0000000008000f34       0x48 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-init.o)
-                0x0000000008000f34                __libc_init_array
+                0x00000000080010a0       0x48 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-init.o)
+                0x00000000080010a0                __libc_init_array
  *(.glue_7)
- .glue_7        0x0000000008000f7c        0x0 linker stubs
+ .glue_7        0x00000000080010e8        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0000000008000f7c        0x0 linker stubs
+ .glue_7t       0x00000000080010e8        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0000000008000f7c        0x0 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+ .eh_frame      0x00000000080010e8        0x0 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
  *(.init)
- .init          0x0000000008000f7c        0x4 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crti.o
-                0x0000000008000f7c                _init
- .init          0x0000000008000f80        0x8 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
+ .init          0x00000000080010e8        0x4 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crti.o
+                0x00000000080010e8                _init
+ .init          0x00000000080010ec        0x8 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
  *(.fini)
- .fini          0x0000000008000f88        0x4 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crti.o
-                0x0000000008000f88                _fini
- .fini          0x0000000008000f8c        0x8 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
-                0x0000000008000f94                . = ALIGN (0x4)
-                0x0000000008000f94                _etext = .
+ .fini          0x00000000080010f4        0x4 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crti.o
+                0x00000000080010f4                _fini
+ .fini          0x00000000080010f8        0x8 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
+                0x0000000008001100                . = ALIGN (0x4)
+                0x0000000008001100                _etext = .
 
-.vfp11_veneer   0x0000000008000f94        0x0
- .vfp11_veneer  0x0000000008000f94        0x0 linker stubs
+.vfp11_veneer   0x0000000008001100        0x0
+ .vfp11_veneer  0x0000000008001100        0x0 linker stubs
 
-.v4_bx          0x0000000008000f94        0x0
- .v4_bx         0x0000000008000f94        0x0 linker stubs
+.v4_bx          0x0000000008001100        0x0
+ .v4_bx         0x0000000008001100        0x0 linker stubs
 
-.iplt           0x0000000008000f94        0x0
- .iplt          0x0000000008000f94        0x0 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+.iplt           0x0000000008001100        0x0
+ .iplt          0x0000000008001100        0x0 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
 
-.rodata         0x0000000008000f94       0x24
-                0x0000000008000f94                . = ALIGN (0x4)
+.rodata         0x0000000008001100       0x2c
+                0x0000000008001100                . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x0000000008000f94        0xa AE_RTOS/Scheduler.o
- *fill*         0x0000000008000f9e        0x2 
- .rodata        0x0000000008000fa0       0x17 Src/main.o
+ .rodata        0x0000000008001100        0x9 AE_RTOS/Scheduler.o
+ *fill*         0x0000000008001109        0x3 
+ .rodata        0x000000000800110c       0x1e Src/main.o
  *(.rodata*)
-                0x0000000008000fb8                . = ALIGN (0x4)
- *fill*         0x0000000008000fb7        0x1 
+                0x000000000800112c                . = ALIGN (0x4)
+ *fill*         0x000000000800112a        0x2 
 
-.rel.dyn        0x0000000008000fb8        0x0
- .rel.iplt      0x0000000008000fb8        0x0 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+.rel.dyn        0x000000000800112c        0x0
+ .rel.iplt      0x000000000800112c        0x0 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
 
-.ARM.extab      0x0000000008000fb8        0x0
-                0x0000000008000fb8                . = ALIGN (0x4)
+.ARM.extab      0x000000000800112c        0x0
+                0x000000000800112c                . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000000008000fb8                . = ALIGN (0x4)
+                0x000000000800112c                . = ALIGN (0x4)
 
-.ARM            0x0000000008000fb8        0x0
-                0x0000000008000fb8                . = ALIGN (0x4)
-                0x0000000008000fb8                __exidx_start = .
+.ARM            0x000000000800112c        0x0
+                0x000000000800112c                . = ALIGN (0x4)
+                0x000000000800112c                __exidx_start = .
  *(.ARM.exidx*)
-                0x0000000008000fb8                __exidx_end = .
-                0x0000000008000fb8                . = ALIGN (0x4)
+                0x000000000800112c                __exidx_end = .
+                0x000000000800112c                . = ALIGN (0x4)
 
-.preinit_array  0x0000000008000fb8        0x0
-                0x0000000008000fb8                . = ALIGN (0x4)
-                0x0000000008000fb8                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x000000000800112c        0x0
+                0x000000000800112c                . = ALIGN (0x4)
+                0x000000000800112c                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0000000008000fb8                PROVIDE (__preinit_array_end = .)
-                0x0000000008000fb8                . = ALIGN (0x4)
+                0x000000000800112c                PROVIDE (__preinit_array_end = .)
+                0x000000000800112c                . = ALIGN (0x4)
 
-.init_array     0x0000000008000fb8        0x4
-                0x0000000008000fb8                . = ALIGN (0x4)
-                0x0000000008000fb8                PROVIDE (__init_array_start = .)
+.init_array     0x000000000800112c        0x4
+                0x000000000800112c                . = ALIGN (0x4)
+                0x000000000800112c                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0000000008000fb8        0x4 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
-                0x0000000008000fbc                PROVIDE (__init_array_end = .)
-                0x0000000008000fbc                . = ALIGN (0x4)
+ .init_array    0x000000000800112c        0x4 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+                0x0000000008001130                PROVIDE (__init_array_end = .)
+                0x0000000008001130                . = ALIGN (0x4)
 
-.fini_array     0x0000000008000fbc        0x4
-                0x0000000008000fbc                . = ALIGN (0x4)
+.fini_array     0x0000000008001130        0x4
+                0x0000000008001130                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0000000008000fbc        0x4 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
+ .fini_array    0x0000000008001130        0x4 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x0000000008000fc0                . = ALIGN (0x4)
-                0x0000000008000fc0                _sidata = LOADADDR (.data)
+                0x0000000008001134                . = ALIGN (0x4)
+                0x0000000008001134                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000        0x0 load address 0x0000000008000fc0
+.data           0x0000000020000000        0x0 load address 0x0000000008001134
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -1344,11 +1359,11 @@ LOAD c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _edata = .
 
-.igot.plt       0x0000000020000000        0x0 load address 0x0000000008000fc0
+.igot.plt       0x0000000020000000        0x0 load address 0x0000000008001134
  .igot.plt      0x0000000020000000        0x0 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
                 0x0000000020000000                . = ALIGN (0x4)
 
-.bss            0x0000000020000000      0x4d4 load address 0x0000000008000fc0
+.bss            0x0000000020000000      0x508 load address 0x0000000008001134
                 0x0000000020000000                _sbss = .
                 0x0000000020000000                __bss_start__ = _sbss
  *(.bss)
@@ -1360,42 +1375,45 @@ LOAD c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .bss.Gl_Config
                 0x0000000020000024        0x4 Src/MCAL/USART/USART.o
                 0x0000000020000024                Gl_Config
+ .bss.counter.6001
+                0x0000000020000028        0x4 Src/main.o
  *(COMMON)
- COMMON         0x0000000020000028        0x1 AE_RTOS/CortexMx_Os_Porting.o
-                0x0000000020000028                SystikLED
- *fill*         0x0000000020000029        0x3 
- COMMON         0x000000002000002c      0x395 AE_RTOS/Scheduler.o
-                0x000000002000002c                RTOS_IDLE_Task
-                0x0000000020000070                OS_Control
-                0x000000002000021c                ReadyQueue
-                0x0000000020000230                ReadyQueue_FIFO
-                0x00000000200003c0                IdleTaskLed
- *fill*         0x00000000200003c1        0x3 
+ COMMON         0x000000002000002c        0x1 AE_RTOS/CortexMx_Os_Porting.o
+                0x000000002000002c                SysTickLed
+ *fill*         0x000000002000002d        0x3 
+ COMMON         0x0000000020000030      0x394 AE_RTOS/Scheduler.o
+                0x0000000020000030                OS_Control
+                0x00000000200001dc                Ready_QUEUE
+                0x00000000200001f0                IdleTaskLed
+                0x00000000200001f4                RTOS_IdleTask
+                0x0000000020000234                Ready_QUEUE_FIFO
  COMMON         0x00000000200003c4       0x3c Src/MCAL/EXTI/EXTI.o
                 0x00000000200003c4                Global_ptr_callBack
- COMMON         0x0000000020000400       0xd4 Src/main.o
-                0x0000000020000400                task2LED
-                0x0000000020000401                task3LED
-                0x0000000020000404                Task1
-                0x0000000020000448                Task3
-                0x000000002000048c                task1LED
-                0x0000000020000490                Task2
-                0x00000000200004d4                . = ALIGN (0x4)
-                0x00000000200004d4                _ebss = .
-                0x00000000200004d4                __bss_end__ = _ebss
+ COMMON         0x0000000020000400      0x105 Src/main.o
+                0x0000000020000400                Task4
+                0x0000000020000440                T3_Led
+                0x0000000020000441                T2_Led
+                0x0000000020000442                T1_Led
+                0x0000000020000444                Task1
+                0x0000000020000484                Task3
+                0x00000000200004c4                Task2
+                0x0000000020000504                T4_Led
+                0x0000000020000508                . = ALIGN (0x4)
+ *fill*         0x0000000020000505        0x3 
+                0x0000000020000508                _ebss = .
+                0x0000000020000508                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x00000000200004d4      0x604 load address 0x0000000008000fc0
-                0x00000000200004d8                . = ALIGN (0x8)
- *fill*         0x00000000200004d4        0x4 
+                0x0000000020000508      0x600 load address 0x0000000008001134
+                0x0000000020000508                . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
-                0x00000000200004d8                PROVIDE (_end = .)
-                0x00000000200006d8                . = (. + _Min_Heap_Size)
- *fill*         0x00000000200004d8      0x200 
-                0x0000000020000ad8                . = (. + _Min_Stack_Size)
- *fill*         0x00000000200006d8      0x400 
-                0x0000000020000ad8                . = ALIGN (0x8)
-                0x0000000020000ad8                _eheap = .
+                0x0000000020000508                PROVIDE (_end = .)
+                0x0000000020000708                . = (. + _Min_Heap_Size)
+ *fill*         0x0000000020000508      0x200 
+                0x0000000020000b08                . = (. + _Min_Stack_Size)
+ *fill*         0x0000000020000708      0x400 
+                0x0000000020000b08                . = ALIGN (0x8)
+                0x0000000020000b08                _eheap = .
 
 /DISCARD/
  libc.a(*)
@@ -1433,64 +1451,64 @@ LOAD c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000000000218       0x1d c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
 OUTPUT(Arm_course.axf elf32-littlearm)
 
-.debug_info     0x0000000000000000     0x5933
- .debug_info    0x0000000000000000      0xc91 AE_RTOS/AE_RTOS_FIFO.o
- .debug_info    0x0000000000000c91      0x62f AE_RTOS/CortexMx_Os_Porting.o
- .debug_info    0x00000000000012c0      0xfd6 AE_RTOS/Scheduler.o
- .debug_info    0x0000000000002296      0xda6 Src/MCAL/EXTI/EXTI.o
- .debug_info    0x000000000000303c      0xe85 Src/MCAL/SPI/SPI.o
- .debug_info    0x0000000000003ec1      0xdf6 Src/MCAL/USART/USART.o
- .debug_info    0x0000000000004cb7      0xc5a Src/main.o
- .debug_info    0x0000000000005911       0x22 Startup/startup_stm32f103c6tx.o
+.debug_info     0x0000000000000000     0x595f
+ .debug_info    0x0000000000000000      0xca8 AE_RTOS/AE_RTOS_FIFO.o
+ .debug_info    0x0000000000000ca8      0x642 AE_RTOS/CortexMx_Os_Porting.o
+ .debug_info    0x00000000000012ea     0x1017 AE_RTOS/Scheduler.o
+ .debug_info    0x0000000000002301      0xda6 Src/MCAL/EXTI/EXTI.o
+ .debug_info    0x00000000000030a7      0xe85 Src/MCAL/SPI/SPI.o
+ .debug_info    0x0000000000003f2c      0xdf6 Src/MCAL/USART/USART.o
+ .debug_info    0x0000000000004d22      0xc1b Src/main.o
+ .debug_info    0x000000000000593d       0x22 Startup/startup_stm32f103c6tx.o
 
-.debug_abbrev   0x0000000000000000      0xedc
- .debug_abbrev  0x0000000000000000      0x1b5 AE_RTOS/AE_RTOS_FIFO.o
- .debug_abbrev  0x00000000000001b5      0x1b1 AE_RTOS/CortexMx_Os_Porting.o
- .debug_abbrev  0x0000000000000366      0x301 AE_RTOS/Scheduler.o
- .debug_abbrev  0x0000000000000667      0x210 Src/MCAL/EXTI/EXTI.o
- .debug_abbrev  0x0000000000000877      0x217 Src/MCAL/SPI/SPI.o
- .debug_abbrev  0x0000000000000a8e      0x22c Src/MCAL/USART/USART.o
- .debug_abbrev  0x0000000000000cba      0x210 Src/main.o
- .debug_abbrev  0x0000000000000eca       0x12 Startup/startup_stm32f103c6tx.o
+.debug_abbrev   0x0000000000000000      0xf4a
+ .debug_abbrev  0x0000000000000000      0x1cf AE_RTOS/AE_RTOS_FIFO.o
+ .debug_abbrev  0x00000000000001cf      0x1c4 AE_RTOS/CortexMx_Os_Porting.o
+ .debug_abbrev  0x0000000000000393      0x355 AE_RTOS/Scheduler.o
+ .debug_abbrev  0x00000000000006e8      0x210 Src/MCAL/EXTI/EXTI.o
+ .debug_abbrev  0x00000000000008f8      0x217 Src/MCAL/SPI/SPI.o
+ .debug_abbrev  0x0000000000000b0f      0x22c Src/MCAL/USART/USART.o
+ .debug_abbrev  0x0000000000000d3b      0x1fd Src/main.o
+ .debug_abbrev  0x0000000000000f38       0x12 Startup/startup_stm32f103c6tx.o
 
-.debug_loc      0x0000000000000000     0x10f0
- .debug_loc     0x0000000000000000      0x170 AE_RTOS/AE_RTOS_FIFO.o
- .debug_loc     0x0000000000000170      0x224 AE_RTOS/CortexMx_Os_Porting.o
- .debug_loc     0x0000000000000394      0x3e0 AE_RTOS/Scheduler.o
- .debug_loc     0x0000000000000774      0x320 Src/MCAL/EXTI/EXTI.o
- .debug_loc     0x0000000000000a94      0x2bc Src/MCAL/SPI/SPI.o
- .debug_loc     0x0000000000000d50      0x294 Src/MCAL/USART/USART.o
- .debug_loc     0x0000000000000fe4      0x10c Src/main.o
+.debug_loc      0x0000000000000000     0x1210
+ .debug_loc     0x0000000000000000      0x1cc AE_RTOS/AE_RTOS_FIFO.o
+ .debug_loc     0x00000000000001cc      0x284 AE_RTOS/CortexMx_Os_Porting.o
+ .debug_loc     0x0000000000000450      0x474 AE_RTOS/Scheduler.o
+ .debug_loc     0x00000000000008c4      0x320 Src/MCAL/EXTI/EXTI.o
+ .debug_loc     0x0000000000000be4      0x2bc Src/MCAL/SPI/SPI.o
+ .debug_loc     0x0000000000000ea0      0x294 Src/MCAL/USART/USART.o
+ .debug_loc     0x0000000000001134       0xdc Src/main.o
 
-.debug_aranges  0x0000000000000000      0x2d0
+.debug_aranges  0x0000000000000000      0x2e8
  .debug_aranges
-                0x0000000000000000       0x38 AE_RTOS/AE_RTOS_FIFO.o
+                0x0000000000000000       0x40 AE_RTOS/AE_RTOS_FIFO.o
  .debug_aranges
-                0x0000000000000038       0x70 AE_RTOS/CortexMx_Os_Porting.o
+                0x0000000000000040       0x70 AE_RTOS/CortexMx_Os_Porting.o
  .debug_aranges
-                0x00000000000000a8       0x88 AE_RTOS/Scheduler.o
+                0x00000000000000b0       0x98 AE_RTOS/Scheduler.o
  .debug_aranges
-                0x0000000000000130       0x80 Src/MCAL/EXTI/EXTI.o
+                0x0000000000000148       0x80 Src/MCAL/EXTI/EXTI.o
  .debug_aranges
-                0x00000000000001b0       0x58 Src/MCAL/SPI/SPI.o
+                0x00000000000001c8       0x58 Src/MCAL/SPI/SPI.o
  .debug_aranges
-                0x0000000000000208       0x60 Src/MCAL/USART/USART.o
+                0x0000000000000220       0x60 Src/MCAL/USART/USART.o
  .debug_aranges
-                0x0000000000000268       0x40 Src/main.o
+                0x0000000000000280       0x40 Src/main.o
  .debug_aranges
-                0x00000000000002a8       0x28 Startup/startup_stm32f103c6tx.o
+                0x00000000000002c0       0x28 Startup/startup_stm32f103c6tx.o
 
-.debug_ranges   0x0000000000000000      0x258
- .debug_ranges  0x0000000000000000       0x28 AE_RTOS/AE_RTOS_FIFO.o
- .debug_ranges  0x0000000000000028       0x60 AE_RTOS/CortexMx_Os_Porting.o
- .debug_ranges  0x0000000000000088       0x78 AE_RTOS/Scheduler.o
- .debug_ranges  0x0000000000000100       0x70 Src/MCAL/EXTI/EXTI.o
- .debug_ranges  0x0000000000000170       0x48 Src/MCAL/SPI/SPI.o
- .debug_ranges  0x00000000000001b8       0x50 Src/MCAL/USART/USART.o
- .debug_ranges  0x0000000000000208       0x30 Src/main.o
- .debug_ranges  0x0000000000000238       0x20 Startup/startup_stm32f103c6tx.o
+.debug_ranges   0x0000000000000000      0x270
+ .debug_ranges  0x0000000000000000       0x30 AE_RTOS/AE_RTOS_FIFO.o
+ .debug_ranges  0x0000000000000030       0x60 AE_RTOS/CortexMx_Os_Porting.o
+ .debug_ranges  0x0000000000000090       0x88 AE_RTOS/Scheduler.o
+ .debug_ranges  0x0000000000000118       0x70 Src/MCAL/EXTI/EXTI.o
+ .debug_ranges  0x0000000000000188       0x48 Src/MCAL/SPI/SPI.o
+ .debug_ranges  0x00000000000001d0       0x50 Src/MCAL/USART/USART.o
+ .debug_ranges  0x0000000000000220       0x30 Src/main.o
+ .debug_ranges  0x0000000000000250       0x20 Startup/startup_stm32f103c6tx.o
 
-.debug_macro    0x0000000000000000     0x40cc
+.debug_macro    0x0000000000000000     0x40c6
  .debug_macro   0x0000000000000000      0x23d AE_RTOS/AE_RTOS_FIFO.o
  .debug_macro   0x000000000000023d      0xa60 AE_RTOS/AE_RTOS_FIFO.o
  .debug_macro   0x0000000000000c9d       0x22 AE_RTOS/AE_RTOS_FIFO.o
@@ -1530,51 +1548,51 @@ OUTPUT(Arm_course.axf elf32-littlearm)
  .debug_macro   0x0000000000001d0a       0xeb AE_RTOS/AE_RTOS_FIFO.o
  .debug_macro   0x0000000000001df5      0xe74 AE_RTOS/AE_RTOS_FIFO.o
  .debug_macro   0x0000000000002c69      0x11f AE_RTOS/AE_RTOS_FIFO.o
- .debug_macro   0x0000000000002d88       0x28 AE_RTOS/AE_RTOS_FIFO.o
- .debug_macro   0x0000000000002db0       0xce AE_RTOS/CortexMx_Os_Porting.o
- .debug_macro   0x0000000000002e7e       0x8e AE_RTOS/CortexMx_Os_Porting.o
- .debug_macro   0x0000000000002f0c       0x51 AE_RTOS/CortexMx_Os_Porting.o
- .debug_macro   0x0000000000002f5d       0xf1 AE_RTOS/CortexMx_Os_Porting.o
- .debug_macro   0x000000000000304e      0x247 AE_RTOS/Scheduler.o
- .debug_macro   0x0000000000003295       0x46 AE_RTOS/Scheduler.o
- .debug_macro   0x00000000000032db      0x32a AE_RTOS/Scheduler.o
- .debug_macro   0x0000000000003605      0x150 Src/MCAL/EXTI/EXTI.o
- .debug_macro   0x0000000000003755      0x214 Src/MCAL/EXTI/EXTI.o
- .debug_macro   0x0000000000003969      0x162 Src/MCAL/SPI/SPI.o
- .debug_macro   0x0000000000003acb       0xbe Src/MCAL/SPI/SPI.o
- .debug_macro   0x0000000000003b89      0x181 Src/MCAL/USART/USART.o
- .debug_macro   0x0000000000003d0a       0xdc Src/MCAL/USART/USART.o
- .debug_macro   0x0000000000003de6      0x27b Src/main.o
- .debug_macro   0x0000000000004061       0x16 Src/main.o
- .debug_macro   0x0000000000004077       0x35 Src/main.o
- .debug_macro   0x00000000000040ac       0x20 Src/main.o
+ .debug_macro   0x0000000000002d88       0x2e AE_RTOS/AE_RTOS_FIFO.o
+ .debug_macro   0x0000000000002db6       0xce AE_RTOS/CortexMx_Os_Porting.o
+ .debug_macro   0x0000000000002e84       0x8e AE_RTOS/CortexMx_Os_Porting.o
+ .debug_macro   0x0000000000002f12       0x51 AE_RTOS/CortexMx_Os_Porting.o
+ .debug_macro   0x0000000000002f63       0xf1 AE_RTOS/CortexMx_Os_Porting.o
+ .debug_macro   0x0000000000003054      0x247 AE_RTOS/Scheduler.o
+ .debug_macro   0x000000000000329b       0x46 AE_RTOS/Scheduler.o
+ .debug_macro   0x00000000000032e1      0x32a AE_RTOS/Scheduler.o
+ .debug_macro   0x000000000000360b      0x14c Src/MCAL/EXTI/EXTI.o
+ .debug_macro   0x0000000000003757      0x214 Src/MCAL/EXTI/EXTI.o
+ .debug_macro   0x000000000000396b      0x15e Src/MCAL/SPI/SPI.o
+ .debug_macro   0x0000000000003ac9       0xbe Src/MCAL/SPI/SPI.o
+ .debug_macro   0x0000000000003b87      0x17d Src/MCAL/USART/USART.o
+ .debug_macro   0x0000000000003d04       0xdc Src/MCAL/USART/USART.o
+ .debug_macro   0x0000000000003de0      0x27b Src/main.o
+ .debug_macro   0x000000000000405b       0x16 Src/main.o
+ .debug_macro   0x0000000000004071       0x35 Src/main.o
+ .debug_macro   0x00000000000040a6       0x20 Src/main.o
 
-.debug_line     0x0000000000000000     0x322c
- .debug_line    0x0000000000000000      0x70d AE_RTOS/AE_RTOS_FIFO.o
- .debug_line    0x000000000000070d      0x577 AE_RTOS/CortexMx_Os_Porting.o
- .debug_line    0x0000000000000c84      0x87d AE_RTOS/Scheduler.o
- .debug_line    0x0000000000001501      0x735 Src/MCAL/EXTI/EXTI.o
- .debug_line    0x0000000000001c36      0x6a2 Src/MCAL/SPI/SPI.o
- .debug_line    0x00000000000022d8      0x78d Src/MCAL/USART/USART.o
- .debug_line    0x0000000000002a65      0x743 Src/main.o
- .debug_line    0x00000000000031a8       0x84 Startup/startup_stm32f103c6tx.o
+.debug_line     0x0000000000000000     0x3259
+ .debug_line    0x0000000000000000      0x71f AE_RTOS/AE_RTOS_FIFO.o
+ .debug_line    0x000000000000071f      0x568 AE_RTOS/CortexMx_Os_Porting.o
+ .debug_line    0x0000000000000c87      0x8c5 AE_RTOS/Scheduler.o
+ .debug_line    0x000000000000154c      0x726 Src/MCAL/EXTI/EXTI.o
+ .debug_line    0x0000000000001c72      0x693 Src/MCAL/SPI/SPI.o
+ .debug_line    0x0000000000002305      0x77e Src/MCAL/USART/USART.o
+ .debug_line    0x0000000000002a83      0x752 Src/main.o
+ .debug_line    0x00000000000031d5       0x84 Startup/startup_stm32f103c6tx.o
 
-.debug_str      0x0000000000000000    0x1298e
- .debug_str     0x0000000000000000     0xe6fb AE_RTOS/AE_RTOS_FIFO.o
-                                       0xe97c (size before relaxing)
- .debug_str     0x000000000000e6fb      0x32f AE_RTOS/CortexMx_Os_Porting.o
-                                       0xa6c1 (size before relaxing)
- .debug_str     0x000000000000ea2a      0x296 AE_RTOS/Scheduler.o
-                                       0xebc7 (size before relaxing)
- .debug_str     0x000000000000ecc0     0x2d82 Src/MCAL/EXTI/EXTI.o
+.debug_str      0x0000000000000000    0x129e1
+ .debug_str     0x0000000000000000     0xe75a AE_RTOS/AE_RTOS_FIFO.o
+                                       0xe9dc (size before relaxing)
+ .debug_str     0x000000000000e75a      0x345 AE_RTOS/CortexMx_Os_Porting.o
+                                       0xa74c (size before relaxing)
+ .debug_str     0x000000000000ea9f      0x269 AE_RTOS/Scheduler.o
+                                       0xec1c (size before relaxing)
+ .debug_str     0x000000000000ed08     0x2d82 Src/MCAL/EXTI/EXTI.o
                                        0x90a6 (size before relaxing)
- .debug_str     0x0000000000011a42      0x67b Src/MCAL/SPI/SPI.o
+ .debug_str     0x0000000000011a8a      0x67b Src/MCAL/SPI/SPI.o
                                        0x7f5a (size before relaxing)
- .debug_str     0x00000000000120bd      0x7c3 Src/MCAL/USART/USART.o
+ .debug_str     0x0000000000012105      0x7c3 Src/MCAL/USART/USART.o
                                        0x962c (size before relaxing)
- .debug_str     0x0000000000012880       0xdd Src/main.o
-                                       0xe9eb (size before relaxing)
- .debug_str     0x000000000001295d       0x31 Startup/startup_stm32f103c6tx.o
+ .debug_str     0x00000000000128c8       0xe8 Src/main.o
+                                       0xea05 (size before relaxing)
+ .debug_str     0x00000000000129b0       0x31 Startup/startup_stm32f103c6tx.o
                                          0x6e (size before relaxing)
 
 .comment        0x0000000000000000       0x7b
@@ -1587,13 +1605,13 @@ OUTPUT(Arm_course.axf elf32-littlearm)
  .comment       0x000000000000007b       0x7c Src/MCAL/USART/USART.o
  .comment       0x000000000000007b       0x7c Src/main.o
 
-.debug_frame    0x0000000000000000      0x900
- .debug_frame   0x0000000000000000       0xb0 AE_RTOS/AE_RTOS_FIFO.o
- .debug_frame   0x00000000000000b0      0x140 AE_RTOS/CortexMx_Os_Porting.o
- .debug_frame   0x00000000000001f0      0x1e8 AE_RTOS/Scheduler.o
- .debug_frame   0x00000000000003d8      0x1b0 Src/MCAL/EXTI/EXTI.o
- .debug_frame   0x0000000000000588      0x144 Src/MCAL/SPI/SPI.o
- .debug_frame   0x00000000000006cc      0x14c Src/MCAL/USART/USART.o
- .debug_frame   0x0000000000000818       0x9c Src/main.o
- .debug_frame   0x00000000000008b4       0x2c c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-init.o)
- .debug_frame   0x00000000000008e0       0x20 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-strcmp.o)
+.debug_frame    0x0000000000000000      0x990
+ .debug_frame   0x0000000000000000       0xd8 AE_RTOS/AE_RTOS_FIFO.o
+ .debug_frame   0x00000000000000d8      0x160 AE_RTOS/CortexMx_Os_Porting.o
+ .debug_frame   0x0000000000000238      0x230 AE_RTOS/Scheduler.o
+ .debug_frame   0x0000000000000468      0x1b0 Src/MCAL/EXTI/EXTI.o
+ .debug_frame   0x0000000000000618      0x144 Src/MCAL/SPI/SPI.o
+ .debug_frame   0x000000000000075c      0x14c Src/MCAL/USART/USART.o
+ .debug_frame   0x00000000000008a8       0x9c Src/main.o
+ .debug_frame   0x0000000000000944       0x2c c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-init.o)
+ .debug_frame   0x0000000000000970       0x20 c:/st/stm32cubeide_1.4.0/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.4.0.202007081208/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-strcmp.o)

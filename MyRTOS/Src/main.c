@@ -9,83 +9,98 @@
 #include"Scheduler.h"
 #include"AE_RTOS_FIFO.h"
 
-void wait(uint32_t time)
+Task_ref Task1, Task2, Task3, Task4;
+unsigned char T1_Led, T2_Led, T3_Led, T4_Led;
+void Task1_func()
 {
-	uint32_t i , j;
+	static int counter = 0 ;
+	while(1)
+	{
+		T1_Led ^=1;
+		counter++;
+		if(counter==30)
+		{
+			RTOS_ActivateTask(&Task4);
 
-	for( i=0 ; i<time ; i++)
-		for(j=0 ; j<255 ; j++);
+		}
+		RTOS_Task_Wait(100,&Task1);
+	}
 }
 
-Task_ref_t Task1 , Task2 , Task3 ;
-unsigned char task1LED , task2LED , task3LED;
-void task1_fun()
+void Task2_func()
 {
 	while(1)
 	{
-		task1LED ^= 1 ;
+		T2_Led ^=1;
+		RTOS_Task_Wait(300,&Task2);
 	}
 }
-void task2_fun()
+
+void Task3_func()
 {
 	while(1)
 	{
-		task2LED ^= 1 ;
+		T3_Led ^=1;
+		RTOS_Task_Wait(500,&Task3);
 	}
 }
-void task3_fun()
+
+void Task4_func()
 {
+	static int counter = 0 ;
 	while(1)
 	{
-		task3LED ^= 1 ;
+		T4_Led ^=1;
+		RTOS_Task_Wait(1000, &Task4);
 	}
 }
 
+int main(void)
+{
+	Hardware_init();
+	RTOS_init();
 
-int main()
-   {
-	// HW_Init (CLK-RCC)
-	HW_Init();
-	// RTOS Initialization
-	if(RTOS_Init() == E_NOK)
-	{
-		while(1);
-	}
-	Task1.StackSize = 1024 ;
-	Task1.ptr_TaskEntery = task1_fun ;
-	Task1.TaskPriority = 3 ;
-	strcpy(Task1.TaskName,"task_1");
-	Task2.StackSize = 1024 ;
-	Task2.ptr_TaskEntery = task2_fun ;
-	Task2.TaskPriority = 3 ;
-	strcpy(Task2.TaskName,"task_2");
-	Task3.StackSize = 1024 ;
-	Task3.ptr_TaskEntery = task3_fun ;
-	Task3.TaskPriority = 3 ;
-	strcpy(Task3.TaskName,"task_3");
+	Task1.Stack_Size = 1024;
+	Task1.P_TaskEntery = Task1_func;
+	Task1.Priority = 3;
+	Task1.Task_State = Suspended;
+	strcpy(Task1.Task_name,"task1");
 
-	RTOS_Create_Task(&Task1);
-	RTOS_Create_Task(&Task2);
-	RTOS_Create_Task(&Task3);
-	RTOS_Activate_Task(&Task1);
-	RTOS_Activate_Task(&Task2);
-	RTOS_Activate_Task(&Task3);
+	Task2.Stack_Size = 1024;
+	Task2.P_TaskEntery = Task2_func;
+	Task2.Priority = 3;
+	Task2.Task_State = Suspended;
+	strcpy(Task2.Task_name,"task2");
+
+	Task3.Stack_Size = 1024;
+	Task3.P_TaskEntery = Task3_func;
+	Task3.Priority = 3;
+	Task3.Task_State = Suspended;
+	strcpy(Task3.Task_name,"task3");
+
+
+	Task4.Stack_Size = 1024;
+	Task4.P_TaskEntery = Task4_func;
+	Task4.Priority = 1;
+	Task4.Task_State = Suspended;
+	strcpy(Task4.Task_name,"task4");
+
+	RTOS_CreateTask(&Task1);
+	RTOS_CreateTask(&Task2);
+	RTOS_CreateTask(&Task3);
+	RTOS_CreateTask(&Task4);
+
+
+	RTOS_ActivateTask(&Task1);
+	RTOS_ActivateTask(&Task2);
+	RTOS_ActivateTask(&Task3);
+
 	RTOS_StartOS();
+
 	while(1)
 	{
 
-
-
 	}
-	return 0 ;
 }
-
-
-
-
-
-
-
-
 
 

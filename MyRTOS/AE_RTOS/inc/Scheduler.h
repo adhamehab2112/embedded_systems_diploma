@@ -9,53 +9,48 @@
 #define INC_SCHEDULER_H_
 #include"CortexMx_Os_Porting.h"
 
-
-/************************************** Os Errors Enumeration ********************************/
-typedef enum {
-	E_NOK ,
-	E_OK ,
-	ReadyQueue_init_error ,
-	StackSize_exceeds
-}Os_Error_State_t;
-/********************************************************************************************/
-
 /************************************** Tasks reference struct ******************************/
-typedef struct {
-	unsigned int StackSize ;
-	unsigned char TaskPriority ;
-	void (*ptr_TaskEntery)(void);
-	enum {
-		AutoStart_Dis ,
-		AutoStart_En
-	}AutoStart_State;
-	unsigned int _S_PSP_Task  ;
-	unsigned int _E_PSP_Task  ;
-	unsigned int *Current_PSP ;
-	unsigned char TaskName[30];
+typedef enum{
+	Suspended,
+	Ready,
+	Waiting,
+	Running
+}T_State;
+
+typedef struct{
 	enum{
-		Suspended ,
-		Waiting   ,
-		Ready     ,
-		Running
-	}TaskState;
-	struct{
-			enum {
-				Blocking_Dis ,
-				Blocking_En
-			}BlockingState;
-			unsigned int Ticks_Count ;
-	}TimeWaiting;
-}Task_ref_t;
+		Blocking_Disable,
+		Blocking_Enable
+	}Blocking;
+	unsigned int Ticks_count;
+}Time_wait;
 
+typedef struct{
 
+	unsigned int Stack_Size;
+	unsigned char Priority;
+	void (*P_TaskEntery)(void);
+	unsigned int _S_PSP_Task;
+	unsigned int _E_PSP_Task;
+	unsigned int* Current_PSP;
+	T_State Task_State;
+	char Task_name[30];
+	Time_wait TimeWait;
 
+}Task_ref;
+
+typedef enum {
+	NOError,
+	Ready_Queue_init_error,
+	Task_exceeded_StackSize
+}RTOS_errorID;
 /************************************** APIs Header *****************************************/
-void 				 OS_SVC_Services(int *args);
-void 				 Os_SVC_Set(int SVC_ID);
-Os_Error_State_t	 RTOS_Init(void);
-Os_Error_State_t 	 RTOS_Create_Task(Task_ref_t *Ptr_task);
-Os_Error_State_t 	 RTOS_Terminate_Task(Task_ref_t *Ptr_task);
-Os_Error_State_t 	 RTOS_StartOS();
+RTOS_errorID 		RTOS_init();
+RTOS_errorID 		RTOS_CreateTask(Task_ref *Task_ref);
+void 				RTOS_ActivateTask(Task_ref* T_ref);
+void 				RTOS_TerminalTask(Task_ref* T_ref);
+void 				RTOS_StartOS();
+void				RTOS_Task_Wait(unsigned int	NumOfTicks , Task_ref *Task_ref);
 
 
 #endif /* INC_SCHEDULER_H_ */

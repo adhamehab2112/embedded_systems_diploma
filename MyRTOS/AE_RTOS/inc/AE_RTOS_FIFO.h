@@ -16,7 +16,7 @@ Version :1.0
 #include"stdint.h"
 #include"Scheduler.h"
 /*customer can select element type */
-#define element_type Task_ref_t* // buffer of pointers to  tasks not int ^_^
+#define element_type Task_ref* // buffer of pointers to  tasks not int ^_^
 typedef struct{
 	unsigned int counter;
 	element_type* head;
