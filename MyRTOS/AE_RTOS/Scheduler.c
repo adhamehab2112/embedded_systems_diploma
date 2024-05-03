@@ -547,3 +547,48 @@ void RTOS_Task_Wait(unsigned int NumOfTicks , Task_ref *Task_ref)
 	OS_SVC_Set(TerminateTask);
 
 }
+/**================================================================
+* @Fn    		: RTOS_AcquireMutex
+* @brief 		: This function used to request a certain mutex
+* @param [in] 	: address of the requested mutex and address of requesting function
+* @param [out] 	: RTOS_errorID
+*===================================================================*/
+RTOS_errorID RTOS_AcquireMutex(Mutex_ref *ptrMutex , Task_ref *ptrTask)
+{
+	RTOS_errorID errorState = NOError ;
+	if(ptrMutex->Current_Using_Task == NULL)
+	{
+		ptrMutex->Current_Using_Task = ptrTask ;
+	}
+	else
+	{
+		if(ptrMutex->Next_Using_Task == NULL)
+		{
+			ptrMutex->Next_Using_Task = ptrTask ;
+			ptrMutex->Next_Using_Task->Task_State = Suspended ;
+			OS_SVC_Set(TerminateTask);
+		}
+		else
+		{
+			errorState += Mutex_Full ;
+		}
+	}
+	return errorState ;
+}
+/**================================================================
+* @Fn    		: RTOS_ReleaseMutex
+* @brief 		: This function used to request a certain mutex
+* @param [in] 	: address of the released mutex
+* @param [out] 	: RTOS_errorID
+*===================================================================*/
+void RTOS_ReleaseMutex(Mutex_ref *ptrMutex)
+{
+	if(ptrMutex->Current_Using_Task != NULL)
+	{
+		ptrMutex->Current_Using_Task = ptrMutex->Next_Using_Task ;
+		ptrMutex->Next_Using_Task = NULL ;
+		ptrMutex->Current_Using_Task->Task_State = Waiting;
+		OS_SVC_Set(ActivateTask);
+
+	}
+}

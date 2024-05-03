@@ -14,3 +14,5 @@ Scheduler.c:499:6:RTOS_ActivateTask	16	static
 Scheduler.c:510:6:RTOS_TerminalTask	16	static
 Scheduler.c:521:6:RTOS_StartOS	8	static,ignoring_inline_asm
 Scheduler.c:542:6:RTOS_Task_Wait	16	static
+Scheduler.c:556:14:RTOS_AcquireMutex	24	static
+Scheduler.c:584:6:RTOS_ReleaseMutex	16	static

@@ -42,8 +42,18 @@ typedef struct{
 typedef enum {
 	NOError,
 	Ready_Queue_init_error,
-	Task_exceeded_StackSize
+	Task_exceeded_StackSize,
+	Mutex_Full
 }RTOS_errorID;
+
+/************************************** Mutex Implementation ********************************/
+typedef struct {
+	unsigned char *Ptr_Payload        ; /*It 's an array used in Inter Task Communication to exchange data between tasks*/
+	unsigned int   PayloadSize 	      ;
+	Task_ref	  *Current_Using_Task ;
+	Task_ref	  *Next_Using_Task    ;
+	unsigned char  MutexName[30]	  ;
+}Mutex_ref;
 /************************************** APIs Header *****************************************/
 RTOS_errorID 		RTOS_init();
 RTOS_errorID 		RTOS_CreateTask(Task_ref *Task_ref);
@@ -51,6 +61,7 @@ void 				RTOS_ActivateTask(Task_ref* T_ref);
 void 				RTOS_TerminalTask(Task_ref* T_ref);
 void 				RTOS_StartOS();
 void				RTOS_Task_Wait(unsigned int	NumOfTicks , Task_ref *Task_ref);
-
+RTOS_errorID 		RTOS_AcquireMutex(Mutex_ref *ptrMutex , Task_ref *ptrTask);
+void				RTOS_ReleaseMutex(Mutex_ref *ptrMutex);
 
 #endif /* INC_SCHEDULER_H_ */
